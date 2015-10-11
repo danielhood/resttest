@@ -11,11 +11,14 @@ func Logger(inner http.Handler, name string) http.Handler {
 		start := time.Now()
 		inner.ServeHTTP(w, r)
 		log.Printf(
-			"%s\t%s\t%s\t%s",
+			"*** %s\t%s\t%s\t%s",
 			r.Method,
 			r.RequestURI,
 			name,
 			time.Since(start),
 		)
+		for k, v := range r.Header {
+			log.Println("key:", k, "value:", v)
+		}
 	})
 }
