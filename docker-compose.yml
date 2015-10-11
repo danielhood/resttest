@@ -1,0 +1,4 @@
+resttest:
+  image: danielhood/resttest
+  ports:
+    - "8080:8080"
